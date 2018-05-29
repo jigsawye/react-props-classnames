@@ -2,9 +2,9 @@
 
 **Easily transform component's props to classnames**
 
- - Good usage with `styled-components` when you want to control styles by props.
- - Transform your boolena and string props to className.
- - Customized classNames prefix.
+- Good usage with `styled-components` when you want to control styles by props.
+- Transform your boolena and string props to className.
+- Customized classNames prefix.
 
 ## Install
 
@@ -45,14 +45,19 @@ export default propsTransform(Button);
 
 ## API
 
-### `createPropsTransform`
+### `createPropsTransform(options)`
 
-|   key   |    Type    |     Default    |               Description                   |
-|:--------|:-----------|:---------------|:--------------------------------------------|
-|   bool  |  `Boolean` |      true      |Transform boolean props to classNames or not.|
-|  string |  `Boolean` |      true      |Transform string props to classNames or not. |
-|  prefix |  `String`  |'default-prefix'|The prefix of every classNames.              |
+#### `options` _(Object)_
 
+| key    | Type      | Default          | Description                                   |
+| :----- | :-------- | :--------------- | :-------------------------------------------- |
+| bool   | `Boolean` | true             | Transform boolean props to classNames or not. |
+| string | `Boolean` | true             | Transform string props to classNames or not.  |
+| prefix | `String`  | 'default-prefix' | The prefix of every classNames.               |
+
+#### Returns
+
+A higher-order component that transform props then pass into your components.
 
 ## License
 

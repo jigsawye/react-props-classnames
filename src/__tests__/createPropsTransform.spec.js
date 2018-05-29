@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from 'enzyme';
 import styled from 'styled-components';
 
 import createPropsTransform from '../createPropsTransform';
@@ -22,14 +22,10 @@ describe('createPropsTransform', () => {
       background-color: #fff;
     `;
     const TransformedComponent = propsTansform(StyledComp);
-    const component = mount(<TransformedComponent disabled size="lg" />);
+    const component = render(<TransformedComponent disabled size="lg" />);
 
     expect(component).toMatchSnapshot();
-    expect(
-      component
-        .children()
-        .children()
-        .prop('classNames')
-    ).toEqual('default-prefix-disabled default-prefix-size-lg');
+    expect(component.prop('class')).toMatch(/default-prefix-disabled/);
+    expect(component.prop('class')).toMatch(/default-prefix-size-lg/);
   });
 });

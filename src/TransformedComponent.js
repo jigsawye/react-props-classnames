@@ -4,21 +4,21 @@ import PropsTransform from './PropsTransform';
 
 const TransformedComponent = ({
   options,
-  classNames,
+  className,
   children,
   ...otherOrops
 }) => {
   const propsTransform = new PropsTransform(options);
-  const propsClassNames = propsTransform.getClassNamesFromProps(otherOrops);
-  const mergedClassNames = `${classNames} ${propsClassNames}`.trim();
+  const propsClassName = propsTransform.getClassNameFromProps(otherOrops);
+  const mergedClassName = `${className} ${propsClassName}`.trim();
 
-  return children({ classNames: mergedClassNames, ...otherOrops });
+  return children({ className: mergedClassName, ...otherOrops });
 };
 
 TransformedComponent.displayName = 'PropsTransform';
 
 TransformedComponent.propTypes = {
-  classNames: PropTypes.string,
+  className: PropTypes.string,
   options: PropTypes.shape({
     string: PropTypes.string,
     bool: PropTypes.bool,
@@ -27,7 +27,7 @@ TransformedComponent.propTypes = {
 };
 
 TransformedComponent.defaultProps = {
-  classNames: '',
+  className: '',
   options: {},
 };
 

@@ -5,27 +5,8 @@ exports[`createPropsTransform should transform component props 1`] = `
   background-color: #fff;
 }
 
-<Component
-  disabled={true}
-  size="lg"
->
-  <PropsTransform
-    classNames=""
-    disabled={true}
-    options={Object {}}
-    size="lg"
-  >
-    <styled.div
-      classNames="default-prefix-disabled default-prefix-size-lg"
-      disabled={true}
-      size="lg"
-    >
-      <div
-        className="c0"
-        disabled={true}
-        size="lg"
-      />
-    </styled.div>
-  </PropsTransform>
-</Component>
+<div
+  class="default-prefix-disabled default-prefix-size-lg c0"
+  disabled=""
+/>
 `;

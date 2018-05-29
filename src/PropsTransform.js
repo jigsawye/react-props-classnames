@@ -5,10 +5,10 @@ export default class PropsTransform {
     this._transformString = string;
   }
 
-  getClassNamesFromProps = props => {
+  getClassNameFromProps = props => {
     const { _prefix, _transformBool, _transformString } = this;
 
-    const classNames = Object.keys(props)
+    const className = Object.keys(props)
       .reduce((result, propsKey) => {
         let newResult = result;
         const value = props[propsKey];
@@ -23,6 +23,6 @@ export default class PropsTransform {
       }, [])
       .join(' ');
 
-    return classNames;
+    return className;
   };
 }

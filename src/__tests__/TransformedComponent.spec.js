@@ -17,7 +17,7 @@ describe('TransformedComponent', () => {
 
     expect(component).toMatchSnapshot();
 
-    expect(component.prop('classNames')).toEqual(
+    expect(component.prop('className')).toEqual(
       'default-prefix-disabled default-prefix-size-lg'
     );
   });

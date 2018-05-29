@@ -2,8 +2,11 @@ import React from 'react';
 
 import TransformedComponent from './TransformedComponent';
 
-export default options => Component => props => (
-  <TransformedComponent options={options} {...props}>
-    {transformedProps => <Component {...transformedProps} />}
+// eslint-disable-next-line react/prop-types
+export default options => Component => ({ children, ...otherProps }) => (
+  <TransformedComponent options={options} {...otherProps}>
+    {transformedProps => (
+      <Component {...transformedProps}>{children}</Component>
+    )}
   </TransformedComponent>
 );
