@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createPropsTransform should transform component props 1`] = `
+.c0 {
+  background-color: #fff;
+}
+
+<Component
+  disabled={true}
+  size="lg"
+>
+  <PropsTransform
+    classNames=""
+    disabled={true}
+    options={Object {}}
+    size="lg"
+  >
+    <styled.div
+      classNames="default-prefix-disabled default-prefix-size-lg"
+      disabled={true}
+      size="lg"
+    >
+      <div
+        className="c0"
+        disabled={true}
+        size="lg"
+      />
+    </styled.div>
+  </PropsTransform>
+</Component>
+`;

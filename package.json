@@ -1,0 +1,97 @@
+{
+  "name": "react-props-classnames",
+  "description": "Easily transform component's props to classnames",
+  "author": "jigsawye <jigsawe.ye@gmail.com>",
+  "license": "MIT",
+  "version": "0.0.1",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "npm run clean && babel src -d lib --ignore **/__tests__",
+    "clean": "rimraf lib",
+    "precommit": "lint-staged",
+    "lint": "eslint src",
+    "lint:fix": "npm run lint -- --fix",
+    "prepublish": "npm run build",
+    "test": "npm run lint && npm run testonly",
+    "testonly": "jest",
+    "testonly:watch": "jest --runInBand --watchAll",
+    "testonly:cov": "jest --coverage --runInBand --forceExit",
+    "preversion": "npm run test"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.47",
+    "@babel/core": "^7.0.0-beta.47",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.47",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.47",
+    "@babel/preset-env": "^7.0.0-beta.47",
+    "@babel/preset-react": "^7.0.0-beta.49",
+    "babel-core": "^7.0.0-0",
+    "babel-eslint": "^8.2.3",
+    "babel-jest": "^23.0.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.4",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-yoctol": "^0.16.1",
+    "eslint-config-yoctol-base": "^0.15.1",
+    "eslint-plugin-import": "^2.10.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.8.2",
+    "husky": "^0.14.3",
+    "jest": "^23.0.1",
+    "jest-styled-components": "^5.0.1",
+    "lint-staged": "^7.0.2",
+    "prettier": "^1.12.1",
+    "prettier-package-json": "^1.6.0",
+    "rimraf": "^2.6.2",
+    "styled-components": "^3.3.0"
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "transformIgnorePatterns": [
+      "node_modules",
+      "lib"
+    ],
+    "testPathIgnorePatterns": [
+      "node_modules",
+      "lib"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/test/configure-enzyme.js",
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "timers": "fake",
+    "resetModules": true,
+    "resetMocks": true
+  },
+  "lint-staged": {
+    "*.{json,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.babelrc": [
+      "prettier --write",
+      "git add"
+    ],
+    "*package.json": [
+      "prettier-package-json --write",
+      "prettier --parser json --write",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "singleQuote": true
+  },
+  "dependencies": {
+    "prop-types": "^15.6.1",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0"
+  }
+}
