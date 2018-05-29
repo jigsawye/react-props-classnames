@@ -18,10 +18,10 @@ describe('createPropsTransform', () => {
   it('should transform component props', () => {
     const propsTansform = createPropsTransform();
 
-    const styledComp = styled.div`
+    const StyledComp = styled.div`
       background-color: #fff;
     `;
-    const TransformedComponent = propsTansform(styledComp);
+    const TransformedComponent = propsTansform(StyledComp);
     const component = mount(<TransformedComponent disabled size="lg" />);
 
     expect(component).toMatchSnapshot();
