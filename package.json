@@ -1,13 +1,11 @@
 {
   "name": "react-props-classnames",
   "description": "Easily transform component's props to classnames",
-  "author": "jigsawye <jigsawe.ye@gmail.com>",
   "license": "MIT",
-  "version": "0.1.0",
+  "author": "jigsawye <jigsawe.ye@gmail.com>",
+  "version": "0.1.1",
   "main": "lib/index.js",
-  "files": [
-    "lib"
-  ],
+  "files": ["lib"],
   "scripts": {
     "build": "npm run clean && babel src -d lib --ignore **/__tests__",
     "clean": "rimraf lib",
@@ -17,9 +15,14 @@
     "prepublish": "npm run build",
     "test": "npm run lint && npm run testonly",
     "testonly": "jest",
-    "testonly:watch": "jest --runInBand --watchAll",
     "testonly:cov": "jest --coverage --runInBand --forceExit",
+    "testonly:watch": "jest --runInBand --watchAll",
     "preversion": "npm run test"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.1",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.47",
@@ -53,35 +56,18 @@
   },
   "jest": {
     "coverageDirectory": "./coverage/",
-    "transformIgnorePatterns": [
-      "node_modules",
-      "lib"
-    ],
-    "testPathIgnorePatterns": [
-      "node_modules",
-      "lib"
-    ],
+    "transformIgnorePatterns": ["node_modules", "lib"],
+    "testPathIgnorePatterns": ["node_modules", "lib"],
     "setupTestFrameworkScriptFile": "<rootDir>/test/configure-enzyme.js",
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
     "timers": "fake",
     "resetModules": true,
     "resetMocks": true
   },
   "lint-staged": {
-    "*.{json,md}": [
-      "prettier --write",
-      "git add"
-    ],
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.babelrc": [
-      "prettier --write",
-      "git add"
-    ],
+    "*.{json,md}": ["prettier --write", "git add"],
+    "*.js": ["eslint --fix", "git add"],
+    "*.babelrc": ["prettier --write", "git add"],
     "*package.json": [
       "prettier-package-json --write",
       "prettier --parser json --write",
@@ -91,10 +77,5 @@
   "prettier": {
     "trailingComma": "es5",
     "singleQuote": true
-  },
-  "dependencies": {
-    "prop-types": "^15.6.1",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0"
   }
 }
