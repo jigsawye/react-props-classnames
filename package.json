@@ -5,6 +5,9 @@
   "license": "MIT",
   "version": "0.0.1",
   "main": "src/index.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "build": "npm run clean && babel src -d lib --ignore **/__tests__",
     "clean": "rimraf lib",

@@ -1,4 +1,4 @@
-export default class Transform {
+export default class PropsTransform {
   constructor({ prefix = 'default-prefix', bool = true, string = true } = {}) {
     this._prefix = prefix;
     this._transformBool = bool;
@@ -9,19 +9,20 @@ export default class Transform {
     const { _prefix, _transformBool, _transformString } = this;
 
     const classNames = Object.keys(props)
-      .map(key => {
-        const value = props[key];
+      .reduce((result, propsKey) => {
+        let newResult = result;
+        const value = props[propsKey];
 
         if (_transformBool && typeof value === 'boolean' && value) {
-          return `${_prefix}-${key}`;
+          newResult = [...result, `${_prefix}-${propsKey}`];
         } else if (_transformString && typeof value === 'string') {
-          return `${_prefix}-${key}-${value}`;
+          newResult = [...result, `${_prefix}-${propsKey}-${value}`];
         }
 
-        return null;
-      })
-      .filter(key => key !== null);
+        return newResult;
+      }, [])
+      .join(' ');
 
-    return classNames.join(' ');
+    return classNames;
   };
 }
