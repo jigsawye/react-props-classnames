@@ -1,6 +1,7 @@
 # React Props Classnames
 
 ![Travis](https://img.shields.io/travis/jigsawye/react-props-classnames.svg?style=flat-square)
+![Codecov](https://img.shields.io/codecov/c/github/jigsawye/react-props-classnames.svg?style=flat-square)
 ![npm](https://img.shields.io/npm/v/react-props-classnames.svg?style=flat-square)
 
 **Easily transform component's props to classnames**
