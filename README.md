@@ -7,7 +7,7 @@
 **Easily transform component's props to classnames**
 
 - Good usage with `styled-components` when you want to control styles by props.
-- Transform your boolena and string props to className.
+- Transform your boolean and string props to className.
 - Customized classNames prefix.
 
 ## Install
