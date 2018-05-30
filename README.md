@@ -1,8 +1,8 @@
 # React Props Classnames
 
-![Travis](https://img.shields.io/travis/jigsawye/react-props-classnames.svg?style=flat-square)
-![Codecov](https://img.shields.io/codecov/c/github/jigsawye/react-props-classnames.svg?style=flat-square)
-![npm](https://img.shields.io/npm/v/react-props-classnames.svg?style=flat-square)
+[![Travis](https://img.shields.io/travis/jigsawye/react-props-classnames.svg?style=flat-square)](https://travis-ci.org/jigsawye/react-props-classnames)
+[![Codecov](https://img.shields.io/codecov/c/github/jigsawye/react-props-classnames.svg?style=flat-square)](https://codecov.io/gh/jigsawye/react-props-classnames)
+[![npm](https://img.shields.io/npm/v/react-props-classnames.svg?style=flat-square)](https://www.npmjs.com/package/react-props-classnames)
 
 **Easily transform component's props to classnames**
 
@@ -15,6 +15,10 @@
 ```bash
 yarn add react-props-classnames
 ```
+
+## Examples
+
+[![Edit 5zzjpn94zn](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/5zzjpn94zn)
 
 ## Usage
 
