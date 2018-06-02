@@ -10,3 +10,15 @@ exports[`createPropsTransform should transform component props 1`] = `
   disabled=""
 />
 `;
+
+exports[`createPropsTransform should transform component props with specified \`props\` 1`] = `
+.c0 {
+  background-color: #fff;
+}
+
+<div
+  class="test-disabled test-size-lg c0"
+  disabled=""
+  type="primary"
+/>
+`;

@@ -74,4 +74,18 @@ describe('PropsTransform', () => {
       'default-prefix-size-lg default-prefix-disabled'
     );
   });
+
+  it('should only generate specified props', () => {
+    const propsTransform = new PropsTransform({
+      props: ['specifiedProp'],
+    });
+
+    const generatedClassName = propsTransform.getClassNameFromProps({
+      size: 'lg',
+      disabled: true,
+      specifiedProp: true,
+    });
+
+    expect(generatedClassName).toEqual('default-prefix-specifiedProp');
+  });
 });

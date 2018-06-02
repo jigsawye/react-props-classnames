@@ -1,25 +1,44 @@
+import { isBool, isString, isEmptyArray } from './utils';
+
 export default class PropsTransform {
-  constructor({ prefix = 'default-prefix', bool = true, string = true } = {}) {
+  constructor({
+    prefix = 'default-prefix',
+    props = [],
+    bool = true,
+    string = true,
+  } = {}) {
     this._prefix = prefix;
+    this._props = props;
     this._transformBool = bool;
     this._transformString = string;
+
+    this._hasProps = !isEmptyArray(props);
   }
+
+  _getTransformProps = props => {
+    const { _props, _hasProps } = this;
+    return Object.keys(props).filter(
+      propsKey => (_hasProps && _props.includes(propsKey)) || !_hasProps
+    );
+  };
 
   getClassNameFromProps = props => {
     const { _prefix, _transformBool, _transformString } = this;
 
-    const className = Object.keys(props)
-      .reduce((result, propsKey) => {
-        let newResult = result;
+    const propsKeys = this._getTransformProps(props);
+
+    const className = propsKeys
+      .reduce((prevResult, propsKey) => {
+        const result = [...prevResult];
         const value = props[propsKey];
 
-        if (_transformBool && typeof value === 'boolean' && value) {
-          newResult = [...result, `${_prefix}-${propsKey}`];
-        } else if (_transformString && typeof value === 'string') {
-          newResult = [...result, `${_prefix}-${propsKey}-${value}`];
+        if (_transformBool && isBool(value) && value) {
+          result.push(`${_prefix}-${propsKey}`);
+        } else if (_transformString && isString(value)) {
+          result.push(`${_prefix}-${propsKey}-${value}`);
         }
 
-        return newResult;
+        return result;
       }, [])
       .join(' ');
 
