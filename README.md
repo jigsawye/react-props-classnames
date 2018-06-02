@@ -26,16 +26,19 @@ yarn add react-props-classnames
 import styled from 'styled-components';
 import createPropsTransform from 'react-props-classnames';
 
-const propsTransform = createPropsTransform();
+const propsTransform = createPropsTransform({
+  prefix: 'my-button',
+  props: ['circle', 'size'],
+});
 
 const Button = styled.button`
   /* ... */
 
-  &.default-prefix-circle {
+  &.my-button-circle {
     /* ... */
   }
 
-  &.default-prefix-size-lg {
+  &.my-button-size-lg {
     /* ... */
   }
 `;
@@ -44,11 +47,11 @@ export default propsTransform(Button);
 ```
 
 ```jsx
-<Button circle size="lg">Button</Button>
+<Button circle size="lg" type="button" disalbed>Button</Button>
 
 // will trasnform to
 
-<button class="{...styled generated} default-prefix-circle default-prefix-size-lg">Button</button>
+<button class="{...styled} my-button-circle my-button-size-lg">Button</button>
 ```
 
 ## API
@@ -57,11 +60,12 @@ export default propsTransform(Button);
 
 #### `options` _(Object)_
 
-| key    | Type      | Default          | Description                                   |
-| :----- | :-------- | :--------------- | :-------------------------------------------- |
-| bool   | `Boolean` | true             | Transform boolean props to classNames or not. |
-| string | `Boolean` | true             | Transform string props to classNames or not.  |
-| prefix | `String`  | 'default-prefix' | The prefix of every classNames.               |
+| key    | Type      | Default          | Description                                                                                             |
+| :----- | :-------- | :--------------- | :------------------------------------------------------------------------------------------------------ |
+| prefix | `String`  | 'default-prefix' | The prefix of every classNames.                                                                         |
+| props  | `Array`   | []               | The props which will be transformed. If this option is empty, `propsTransform` will transform any props |
+| bool   | `Boolean` | true             | Transform boolean props to classNames or not.                                                           |
+| string | `Boolean` | true             | Transform string props to classNames or not.                                                            |
 
 #### Returns
 

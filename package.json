@@ -57,6 +57,7 @@
   },
   "jest": {
     "coverageDirectory": "./coverage/",
+    "coveragePathIgnorePatterns": ["node_modules", "test"],
     "collectCoverage": true,
     "transformIgnorePatterns": ["node_modules", "lib"],
     "testPathIgnorePatterns": ["node_modules", "lib"],
