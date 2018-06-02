@@ -2,7 +2,15 @@
   "name": "react-props-classnames",
   "description": "Easily transform component's props to classnames",
   "license": "MIT",
-  "author": "jigsawye <jigsawe.ye@gmail.com>",
+  "author": "Evan Ye <jigsawe.ye@gmail.com> (https://jigsawye.com)",
+  "homepage": "https://github.com/jigsawye/react-props-classnames",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jigsawye/react-props-classnames.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jigsawye/react-props-classnames/issues"
+  },
   "version": "0.1.2",
   "main": "lib/index.js",
   "files": ["lib"],
