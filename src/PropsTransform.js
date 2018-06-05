@@ -8,7 +8,7 @@ export default class PropsTransform {
     string = true,
   } = {}) {
     this._prefix = prefix;
-    this._props = props;
+    this._transformProps = props;
     this._transformBool = bool;
     this._transformString = string;
 
@@ -16,9 +16,10 @@ export default class PropsTransform {
   }
 
   _getTransformProps = props => {
-    const { _props, _hasProps } = this;
+    const { _transformProps, _hasProps } = this;
     return Object.keys(props).filter(
-      propsKey => (_hasProps && _props.includes(propsKey)) || !_hasProps
+      propsKey =>
+        (_hasProps && _transformProps.includes(propsKey)) || !_hasProps
     );
   };
 
