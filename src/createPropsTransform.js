@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 
 import PropsTransform from './PropsTransform';
 
+const getDisplayName = WrappedComponent =>
+  WrappedComponent.displayName || WrappedComponent.name || 'Unknown';
+
 export default options => Component => {
   const TransformedComponent = ({ className, children, ...otherOrops }) => {
     const propsTransform = new PropsTransform(options);
@@ -16,7 +19,9 @@ export default options => Component => {
     );
   };
 
-  TransformedComponent.displayName = 'PropsTransformer';
+  TransformedComponent.displayName = `PropsTransformer(${getDisplayName(
+    Component
+  )})`;
 
   TransformedComponent.propTypes = {
     children: PropTypes.node,
