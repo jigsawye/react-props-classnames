@@ -1,5 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`createPropsTransform should render component name as \`PropsTransformer(DisplayName)\` 1`] = `
+.c0 {
+  background-color: #fff;
+}
+
+<PropsTransformer(styled.div)
+  className=""
+>
+  <styled.div
+    className=""
+  >
+    <div
+      className="c0"
+    />
+  </styled.div>
+</PropsTransformer(styled.div)>
+`;
+
+exports[`createPropsTransform should render component name as \`PropsTransformer(DisplayName)\` 2`] = `
+<PropsTransformer(FunctionalComp)
+  className=""
+>
+  <FunctionalComp
+    className=""
+  >
+    <div />
+  </FunctionalComp>
+</PropsTransformer(FunctionalComp)>
+`;
+
+exports[`createPropsTransform should render component name as \`PropsTransformer(DisplayName)\` 3`] = `
+<PropsTransformer(Unknown)
+  className=""
+>
+  <Component
+    className=""
+  >
+    <div />
+  </Component>
+</PropsTransformer(Unknown)>
+`;
+
 exports[`createPropsTransform should transform component props 1`] = `
 .c0 {
   background-color: #fff;
