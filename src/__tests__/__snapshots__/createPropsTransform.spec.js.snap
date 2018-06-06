@@ -5,12 +5,8 @@ exports[`createPropsTransform should render component name as \`PropsTransformer
   background-color: #fff;
 }
 
-<PropsTransformer(styled.div)
-  className=""
->
-  <styled.div
-    className=""
-  >
+<PropsTransformer(styled.div)>
+  <styled.div>
     <div
       className="c0"
     />
@@ -19,27 +15,34 @@ exports[`createPropsTransform should render component name as \`PropsTransformer
 `;
 
 exports[`createPropsTransform should render component name as \`PropsTransformer(DisplayName)\` 2`] = `
-<PropsTransformer(FunctionalComp)
-  className=""
->
-  <FunctionalComp
-    className=""
-  >
+<PropsTransformer(FunctionalComp)>
+  <FunctionalComp>
     <div />
   </FunctionalComp>
 </PropsTransformer(FunctionalComp)>
 `;
 
 exports[`createPropsTransform should render component name as \`PropsTransformer(DisplayName)\` 3`] = `
-<PropsTransformer(Unknown)
-  className=""
->
-  <Component
-    className=""
-  >
+<PropsTransformer(Unknown)>
+  <Component>
     <div />
   </Component>
 </PropsTransformer(Unknown)>
+`;
+
+exports[`createPropsTransform should render with defaultProps 1`] = `
+<PropsTransformer(Comp)
+  size="m"
+>
+  <Comp
+    className="test-size-m"
+    size="m"
+  >
+    <div>
+      Test
+    </div>
+  </Comp>
+</PropsTransformer(Comp)>
 `;
 
 exports[`createPropsTransform should transform component props 1`] = `
@@ -47,10 +50,22 @@ exports[`createPropsTransform should transform component props 1`] = `
   background-color: #fff;
 }
 
-<div
-  class="default-prefix-disabled default-prefix-size-lg c0"
-  disabled=""
-/>
+<PropsTransformer(styled.div)
+  disabled={true}
+  size="lg"
+>
+  <styled.div
+    className="default-prefix-disabled default-prefix-size-lg"
+    disabled={true}
+    size="lg"
+  >
+    <div
+      className="default-prefix-disabled default-prefix-size-lg c0"
+      disabled={true}
+      size="lg"
+    />
+  </styled.div>
+</PropsTransformer(styled.div)>
 `;
 
 exports[`createPropsTransform should transform component props with specified \`props\` 1`] = `
@@ -58,9 +73,25 @@ exports[`createPropsTransform should transform component props with specified \`
   background-color: #fff;
 }
 
-<div
-  class="test-disabled test-size-lg c0"
-  disabled=""
+<PropsTransformer(styled.div)
+  disabled={true}
+  light={true}
+  size="lg"
   type="primary"
-/>
+>
+  <styled.div
+    className="test-disabled test-size-lg"
+    disabled={true}
+    light={true}
+    size="lg"
+    type="primary"
+  >
+    <div
+      className="test-disabled test-size-lg c0"
+      disabled={true}
+      size="lg"
+      type="primary"
+    />
+  </styled.div>
+</PropsTransformer(styled.div)>
 `;
