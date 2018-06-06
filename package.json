@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/jigsawye/react-props-classnames/issues"
   },
-  "version": "0.2.1",
+  "version": "0.2.2",
   "main": "lib/index.js",
   "files": ["lib"],
   "scripts": {
