@@ -7,16 +7,21 @@ const getDisplayName = WrappedComponent =>
   WrappedComponent.displayName || WrappedComponent.name || 'Unknown';
 
 export default options => Component => {
-  const TransformedComponent = ({ className, children, ...otherOrops }) => {
+  const TransformedComponent = ({
+    className = '',
+    children,
+    ...otherProps
+  }) => {
     const propsTransform = new PropsTransform(options);
-    const propsClassName = propsTransform.getClassNameFromProps(otherOrops);
+    const propsClassName = propsTransform.getClassNameFromProps(otherProps);
     const mergedClassName = `${className} ${propsClassName}`.trim();
+    const props = { ...otherProps };
 
-    return (
-      <Component className={mergedClassName} {...otherOrops}>
-        {children}
-      </Component>
-    );
+    if (mergedClassName !== '') {
+      props.className = mergedClassName;
+    }
+
+    return <Component {...props}>{children}</Component>;
   };
 
   TransformedComponent.displayName = `PropsTransformer(${getDisplayName(
@@ -25,12 +30,13 @@ export default options => Component => {
 
   TransformedComponent.propTypes = {
     children: PropTypes.node,
-    className: PropTypes.string,
+    className: PropTypes.string, // eslint-disable-line react/require-default-props
+    ...Component.propTypes,
   };
 
   TransformedComponent.defaultProps = {
     children: '',
-    className: '',
+    ...Component.defaultProps,
   };
 
   return TransformedComponent;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import styled from 'styled-components';
 
 import createPropsTransform from '../createPropsTransform';
@@ -22,11 +22,15 @@ describe('createPropsTransform', () => {
       background-color: #fff;
     `;
     const TransformedComponent = propsTansform(StyledComp);
-    const component = render(<TransformedComponent disabled size="lg" />);
+    const component = mount(<TransformedComponent disabled size="lg" />);
 
     expect(component).toMatchSnapshot();
-    expect(component.prop('class')).toMatch(/default-prefix-disabled/);
-    expect(component.prop('class')).toMatch(/default-prefix-size-lg/);
+    expect(component.children().prop('className')).toMatch(
+      /default-prefix-disabled/
+    );
+    expect(component.children().prop('className')).toMatch(
+      /default-prefix-size-lg/
+    );
   });
 
   it('should transform component props with specified `props`', () => {
@@ -39,15 +43,17 @@ describe('createPropsTransform', () => {
       background-color: #fff;
     `;
     const TransformedComponent = propsTansform(StyledComp);
-    const component = render(
+    const component = mount(
       <TransformedComponent disabled size="lg" light type="primary" />
     );
 
     expect(component).toMatchSnapshot();
-    expect(component.prop('class')).toMatch(/test-disabled/);
-    expect(component.prop('class')).toMatch(/test-size-lg/);
-    expect(component.prop('class')).not.toMatch(/test-light/);
-    expect(component.prop('class')).not.toMatch(/test-type-primary/);
+    expect(component.children().prop('className')).toMatch(/test-disabled/);
+    expect(component.children().prop('className')).toMatch(/test-size-lg/);
+    expect(component.children().prop('className')).not.toMatch(/test-light/);
+    expect(component.children().prop('className')).not.toMatch(
+      /test-type-primary/
+    );
   });
 
   it('should render component name as `PropsTransformer(DisplayName)`', () => {
@@ -80,5 +86,23 @@ describe('createPropsTransform', () => {
 
     expect(UnknownComponent).toMatchSnapshot();
     expect(UnknownComponent.name()).toEqual('PropsTransformer(Unknown)');
+  });
+
+  it('should render with defaultProps', () => {
+    const propsTansform = createPropsTransform({
+      prefix: 'test',
+      props: ['size'],
+    });
+
+    const Comp = () => <div>Test</div>;
+    Comp.defaultProps = {
+      size: 'm',
+    };
+
+    const TransformedComponent = propsTansform(Comp);
+    const component = mount(<TransformedComponent />);
+
+    expect(component).toMatchSnapshot();
+    expect(component.children().prop('className')).toMatch(/test-size-m/);
   });
 });
